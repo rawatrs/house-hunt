@@ -1,5 +1,5 @@
 #!/bin/bash
-declare -A mapQueries
+source ./settings.sh
 
 #######################################################################
 #
@@ -12,12 +12,19 @@ API_KEY=$1
 FILE=$2
 
 function ZOOPLA_propertyListing {
-	#$1 - API_KEY
-	#$2 - POSTCODE
-	#$3 - PAGESIZE
-	#$4 - PAGENUMBER
+	#$1 - POSTCODE
+	#$2 - PAGESIZE
+	#$3 - PAGENUMBER
 	
-	REQUEST_URI="http://api.zoopla.co.uk/api/v1/property_listings.xml?postcode=$2&page_size=$3&page_number=$4&api_key=$1"
+	REQUEST_URI="http://api.zoopla.co.uk/api/v1/property_listings.xml?postcode=$1&page_size=$2&page_number=$3"
+
+	for k in ${!FILTER[@]}; do
+		REQUEST_URI="$REQUEST_URI&${k}=${FILTER[${k}]}"
+	done
+
+	REQUEST_URI="$REQUEST_URI&api_key=$API_KEY"
+
+	#echo $REQUEST_URI
 
 	RESPONSE=`curl -s -X GET $REQUEST_URI | ~/node_modules/.bin/xml2json | jq ".response" `
 	echo $RESPONSE
@@ -47,7 +54,7 @@ do
 		pageSize=$nListingsToFetch
 		pageNumber=$iteration
 		
-		propertyRecords=$( ZOOPLA_propertyListing $API_KEY $postCode $pageSize $pageNumber )
+		propertyRecords=$( ZOOPLA_propertyListing $postCode $pageSize $pageNumber)
 		noCalls=$((noCalls +1))	
 		
 		totalListings=$nListingsToFetch
