@@ -1,0 +1,7 @@
+{
+        "name"   : "ssr",
+        "config" : {
+                "defaultStringAnalyzer" : "StandardAnalyzer"
+        }
+}
+

@@ -1,0 +1,53 @@
+{
+	"schema" : {
+		"version": "1.0",
+		"topDef" : {
+			"type" : "record",
+			"properties" : {
+				"agent_address"  : { "type" : "string", "optional": true },
+				"agent_logo" : { "type": "string", "optional": true },
+				"agent_name"  : { "type" : "string", "optional": true },
+				"agent_phone" : { "type": "string", "optional": true },
+				"country"  : { "type" : "string", "optional": true },
+				"county" : { "type": "string", "optional": true },
+				"description"  : { "type" : "string", "optional": true },
+				"details_url" : { "type": "string", "optional": true },
+				"displayable_address": { "type": "string", "optional": true },
+				"first_published_date": { "type": "datetime", "optional": true },
+				"floor_plan": { "type": "string", "optional": true },
+				"image_caption": { "type": "string", "optional": true },
+				"image_url": { "type": "string", "optional": true },
+				"last_published_date": { "type": "datetime", "optional": true },
+				"latitude": { "type": "double", "optional": true },
+				"letting_fees": { "type": "string", "optional": true },
+				"listing_id": { "type": "int", "optional": true },
+				"listing_status": { "type": "string", "optional": true },
+				"longitude": { "type": "double", "optional": true },
+				"new_home": { "type": "boolean", "optional": true },
+				"num_bathrooms": { "type": "int", "optional": true },
+				"num_bedrooms": { "type": "int", "optional": true },
+				"num_floors": { "type": "int", "optional": true },
+				"num_recepts": { "type": "int", "optional": true },
+				"outcode": { "type": "string", "optional": true },
+				"post_town": { "type": "string", "optional": true },
+				"price": { "type": "int", "optional": true },
+				"price_change": {
+					"type" : "record",
+					"properties" : {
+					  "date": { "type": "datetime", "optional": true },
+					  "direction": { "type": "string", "optional": true },
+					  "percent": { "type": "string", "optional": true },
+					  "price": { "type": "int", "optional": true }
+					}
+				},
+				"price_modifier": { "type": "string", "optional": true },
+				"property_type": { "type": "string", "optional": true },
+				"short_description": { "type": "string", "optional": true },
+				"status": { "type": "string", "optional": true },
+				"street_name": { "type": "string", "optional": true },
+				"thumbnail_url": { "type": "string", "optional": true }
+			}
+		}
+	}
+}
+
